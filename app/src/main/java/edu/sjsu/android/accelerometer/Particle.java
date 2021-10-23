@@ -21,15 +21,21 @@ public class Particle {
     private float mVelY;    // Y Velocity of ball
 
     // Updates position of ball based on given accelerometer axis values
-    public void updatePosition(float sx, float sy, float sz, long timestamp){
-        // calculates change in time
-        float dt = (SystemClock.elapsedRealtimeNanos() - timestamp) / 1000000000.0f;
-        // calculates change in velocity
-        mVelX += -sx * dt;
-        mVelY += -sy * dt;
-        // calculates change in position
-        mPosX += mVelX * dt;
-        mPosY += mVelY * dt;
+    public void updatePosition(float sx, float sy, float sz, long timeStamp){
+        if (timeStamp < 0){
+            // If timeStamp is an invalid value, do not calculate new values
+            //  of change in time, velocity, or position
+        }
+        else {
+            // calculates change in time
+            float dt = (SystemClock.elapsedRealtimeNanos() - timeStamp) / 1000000000.0f;
+            // calculates change in velocity
+            mVelX += -sx * dt;
+            mVelY += -sy * dt;
+            // calculates change in position
+            mPosX += mVelX * dt;
+            mPosY += mVelY * dt;
+        }
     }
 
     // Handles collisions of ball with given bounds

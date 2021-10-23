@@ -161,6 +161,12 @@ public class SimulationView extends View implements SensorEventListener {
     // Unregisters Listener
     public void stopSimulation(){
         sensorManager.unregisterListener(this);
+
+        // Set timeStamp to an invalid value to make sure
+        //  change in time does not account for when listener
+        //  is unregistered
+        timeStamp = -1;
+
     }
 
     // Draws fields of SimulationView to screen
