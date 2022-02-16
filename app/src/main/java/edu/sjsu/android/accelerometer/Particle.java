@@ -20,6 +20,8 @@ public class Particle {
     private float mVelX;    // X Velocity of ball
     private float mVelY;    // Y Velocity of ball
 
+    private float totalTime = 0;
+
     // Updates position of ball based on given accelerometer axis values
     public void updatePosition(float sx, float sy, float sz, long timeStamp){
         if (timeStamp < 0){
@@ -35,6 +37,23 @@ public class Particle {
             // calculates change in position
             mPosX += mVelX * dt;
             mPosY += mVelY * dt;
+
+            /*
+            Log.d("Acceleration X", Float.toString(sx));
+            Log.d("Acceleration Y", Float.toString(sy));
+            Log.d("Velocity X", Float.toString(mVelX));
+            Log.d("Velocity Y", Float.toString(mVelY));
+            Log.d("Pos X", Float.toString(mPosX));
+            Log.d("Pos Y", Float.toString(mPosY));
+            Log.d("Time Change", Float.toString(dt));
+
+            if ( sx != 0 | sy != 0)
+                totalTime += dt;
+
+            Log.d("Total Time", Float.toString(totalTime));
+            Log.d("Space", "");
+
+             */
         }
     }
 
